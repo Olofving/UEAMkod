@@ -12,7 +12,7 @@ rm(list = ls()) #clear workspace
 colMax <- function(data) sapply(data, max, na.rm = TRUE)
 
 # Load packages
-setwd("~/Documents/Olle temp/UEAM/Kod")
+#setwd("~/Documents/Olle temp/UEAM/Kod")
 source("getPortfolio.r")
 library(xts)
 library(normtest) # Jarque-Bera Normality test
@@ -23,7 +23,7 @@ library(ggplot2)
 # tickers[1] - asset to compare
 # tickers[2] - index to compare
 # tickers[3:end] - portfolio assets
-tickers <- c("PACT.ST", "^OMXSPI", "ACAN-B.ST", "ASSA-B.ST", "BALCO.ST", "CATE.ST", "DOM.ST", "DUST.ST", 
+tickers <- c("ADDT-B.ST", "^OMXSPI", "ACAN-B.ST", "ASSA-B.ST", "BALCO.ST", "CATE.ST", "DOM.ST", "DUST.ST", 
              "ELAN-B.ST", "HEXA-B.ST", "HOFI.ST", "NOBI.ST", "PNDORA.CO", "PROTCT.OL", "PACT.ST", 
              "SECU-B.ST","STEF-B.ST", "SWOL-B.ST", "TOM.OL", "TROAX.ST")
 w <- c(833, 228, 438, 136, 386, 388,
