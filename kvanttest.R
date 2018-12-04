@@ -3,10 +3,10 @@ rm(list=ls())
 library(quantmod)
 library(PerformanceAnalytics)
 
-tickers <- c("LOOM-B.ST", "ACAN-B.ST", "ASSA-B.ST", "BALCO.ST", "CATE.ST", "DOM.ST", "DUST.ST", 
+tickers <- c("ABB.ST", "ACAN-B.ST", "ASSA-B.ST", "BALCO.ST", "CATE.ST", "DOM.ST", "DUST.ST", 
              "ELAN-B.ST", "HEXA-B.ST", "HOFI.ST", "NOBI.ST", "PNDORA.CO", "PROTCT.OL", "PACT.ST", 
              "SECU-B.ST","STEF-B.ST", "SWOL-B.ST", "TOM.OL", "TROAX.ST")
-w <- c(109, 833, 228, 438, 136, 386, 388,
+w <- c(164, 833, 228, 438, 136, 386, 388,
        360, 34, 240, 413, 28, 303,
        214, 225, 944, 252, 104)
 
