@@ -35,22 +35,24 @@ w <- c(833, 228, 438, 136, 386, 388,
 portf <- getPortfolio(tickers, w, from = "2015-06-15", to = "2018-11-05")
 ret_portf <- na.omit(ROC(portf, type = 'discrete'))
 # Compute some tests
-#for (i in 1:ncol(portf)) {
-#  # Compute Box-Pierce test to see if returns are serially correlated
-#  #print(names(portf[, 1]))
-#  #print(Box.test(ret_portf[, i], lag = 1)[3])
-#
-#  # Decorrelating smoothing filter
-#  serial <- lm(ret_portf[2:nrow(ret_portf), i] ~ ret_portf[1:nrow(ret_portf) - 1, i], data = ret_portf)$coefficients[2]
-#  ret_portf[2:(nrow(ret_portf) - 1), i] <- (ret_portf[2:nrow(ret_portf), i] - serial*ret_portf[1:(nrow(ret_portf) - 1), i])/(1 - serial)
-#
-#  # Compute Jarque-Bera normality test (Normal )
-#  print(jb.norm.test(ret_portf[, i], nrepl = 1000)[2])
-#}
+for (i in 1:ncol(portf)) {
+  #Compute Box-Pierce test to see if returns are serially correlated
+  print(names(portf[, 1]))
+  print(Box.test(ret_portf[, i], lag = 1)[3])
+
+  # Decorrelating smoothing filter
+  serial <- lm(ret_portf[2:nrow(ret_portf), i] ~ ret_portf[1:nrow(ret_portf) - 1, i], data = ret_portf)$coefficients[2]
+  ret_portf[2:(nrow(ret_portf) - 1), i] <- (ret_portf[2:nrow(ret_portf), i] - serial*ret_portf[1:(nrow(ret_portf) - 1), i])/(1 - serial)
+
+  # Compute Jarque-Bera normality test (Normal )
+  print(jb.norm.test(ret_portf[, i], nrepl = 1000)[2])
+}
 
 # Test correlation under market stress
+from = 30
+to = 52
 corr_long <- cor(ret_portf[, 1], ret_portf[, 3], method = "pearson")
-corr_stress <- cor(ret_portf[30:52, 1], ret_portf[30:52, 3], method = "pearson")
+corr_stress <- cor(ret_portf[from:to, 1], ret_portf[from:to, 3], method = "pearson")
 plot(na.omit(rollapply(ret_portf[, 1], width = 30, FUN = sd, fill = NA)*sqrt(252)))
 
 # Key
@@ -61,7 +63,8 @@ beta_asset_long = coef(lm(ret_portf[, 1] ~ ret_portf[, 2]))[2]
 #beta_asset_stress = coef(lm(ret_portf[30:52, 1] ~ ret_portf[30:52, 2]))[2]
 beta_portf_long = coef(lm(ret_portf[, 3] ~ ret_portf[, 2]))[2]
 #beta_portf_stress = coef(lm(ret_portf[30:52, 3] ~ ret_portf[30:52, 2]))[2]
-shratio <- (ev-0.01)/stddev_long
+riskfree_rate = 0.01
+shratio <- (ev-riskfree_rate)/stddev_long
 cvar = ES(ret_portf, p = 0.95)
 cvarHistorical = ES(ret_portf, p = 0.95, method = "historical")
 
