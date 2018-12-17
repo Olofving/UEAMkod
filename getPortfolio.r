@@ -9,6 +9,7 @@ getPortfolio <- function(tickers, w, from, to) {
   # to - Load to this day at latest
   #
   # Mattias Bertolino Quantitative Risk Analyst Uppsalaekonomerna Asset Management 2016-2017
+  # Edits by Olof L?fving, Quantitative Risk Analyst Uppsalaekonomerna Asset Management 2017-2018
   
   # Load libraries
   library(quantmod)

@@ -11,11 +11,6 @@ w <- c(164, 833, 228, 438, 136, 386, 388,
        214, 225, 944, 252, 104)
 
 
-#tickers <- c("BALD-B.ST","CATE.ST","STEF-B.ST")
-#w <- c(150,136)
-
-#tickers <- c("THULE.ST", "DOM.ST")
-
 fromdate = "2015-06-15"
 todate = "2018-09-24"
 

@@ -23,16 +23,16 @@ library(ggplot2)
 # tickers[1] - asset to compare
 # tickers[2] - index to compare
 # tickers[3:end] - portfolio assets
-tickers <- c("ABB.ST", "^OMXSPI", "ACAN-B.ST", "ASSA-B.ST", "BALCO.ST", "CATE.ST", "DOM.ST", "DUST.ST", 
-             "ELAN-B.ST", "HEXA-B.ST", "HOFI.ST", "NOBI.ST", "PNDORA.CO", "PROTCT.OL", "PACT.ST", 
+tickers <- c("NOBI.ST", "^OMXSPI", "ABB.ST", "ACAN-B.ST", "ASSA-B.ST", "BALCO.ST", "CATE.ST", "DOM.ST", "DUST.ST", 
+             "ELAN-B.ST", "HEXA-B.ST", "HOFI.ST", "NOBI.ST", "PNDORA.CO", "PROTCT.OL", "PACT.ST", "SBB-B.ST", 
              "SECU-B.ST","STEF-B.ST", "SWOL-B.ST", "TOM.OL", "TROAX.ST")
-w <- c(833, 228, 438, 136, 386, 388,
-       360, 34, 240, 413, 28, 303, 171,
+w <- c(120, 833, 228, 438, 136, 386, 388,
+       360, 34, 240, 413, 28, 303, 170, 2014,
        214, 225, 944, 252, 104)
 
 
 # Load portfolio and calculate portfolio return
-portf <- getPortfolio(tickers, w, from = "2015-06-15", to = "2018-11-05")
+portf <- getPortfolio(tickers, w, from = "2015-06-15", to = "2018-12-14")
 ret_portf <- na.omit(ROC(portf, type = 'discrete'))
 # Compute some tests
 for (i in 1:ncol(portf)) {
